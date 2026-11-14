@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Хранитель оркестра · Жидкие тела</title>
+<title>Мастер арок · Степенная функция</title>
 <style>
 :root{--bg:#f3f7fb;--card:#fff;--ink:#1f2d3d;--blue:#2d6cdf;--green:#2e9e5b;--orange:#f08a24;--soft:#e6eefb}
 *{box-sizing:border-box}
@@ -28,7 +28,7 @@ input[type=text],input[type=number]{font:inherit;padding:12px;border:3px solid v
 #balloon{font-size:130px;transition:transform .25s;display:inline-block}
 .hint{background:#fff8e1;border-radius:12px;padding:10px;font-size:20px}
 @media print{.top,button,.small,#rep ~ *{display:none!important}body{background:#fff;font-size:16px}.card{box-shadow:none}.card:not(#rep){display:none}input,select{border:none!important}}</style></head><body><div class="wrap">
-<div class="top"><h1>🎻 Хранитель оркестра</h1><div><button class="soft" onclick="home()">🏠 Меню</button><button class="soft" id="vc" onclick="toggleVoice()">🗣️ Озвучка вкл.</button><button class="soft" onclick="glossary()">📖 Словарик</button><button class="soft" id="snd" onclick="toggleSound()">🔇 Звуки выкл.</button></div></div>
+<div class="top"><h1>🌉 Мастер арок</h1><div><button class="soft" onclick="home()">🏠 Меню</button><button class="soft" id="vc" onclick="toggleVoice()">🗣️ Озвучка вкл.</button><button class="soft" onclick="glossary()">📖 Словарик</button><button class="soft" id="snd" onclick="toggleSound()">🔇 Звуки выкл.</button></div></div>
 <div id="app"></div>
 <p class="small">Тут нельзя проиграть. Кнопка «🔊 Прочитать» читает текст вслух; озвучку можно выключить вверху. Ошибся — попробуй ещё раз. Подсказка всегда рядом.</p>
 </div>
@@ -84,113 +84,92 @@ function updRes(){const a=avg();$('tot').textContent=a;$('gr2').innerHTML='<b>О
 function done(next){showResults(next)}
 
 
-/* ===== ТЕМА 12: ЖИДКИЕ ТЕЛА (уровень В) ===== */
-const END='Зал в порядке! Скрипки и домбры звучат чисто. Ты настоящий хранитель оркестра!';
-const STORY=['Ты — хранитель музыкального зала. В зале живут скрипки, гитары и домбры.','Они сделаны из дерева. Если воздух слишком сухой — дерево трескается. Если слишком сырой — разбухает, и звук пропадает.','Чтобы сохранить инструменты, нужно понять воду и воздух: влажность, точку росы, поверхностное натяжение и капилляры.','Начинаем?'];
-LVL.v='Уровень В (средний)';
-const LESSONS={v:[
-{e:'💧',t:'Жидкость',x:'Жидкость течёт и принимает форму сосуда. Вода — жидкость. У жидкости есть поверхность, и она ведёт себя особенно.'},
-{e:'🌫️',t:'Влажность воздуха',x:'В воздухе есть водяной пар. Влажность показывает, сколько пара в воздухе. Её измеряют в процентах гигрометром. Относительная влажность: фи равно p делить на p-насыщенное, умножить на сто процентов. Для людей и инструментов хорошо от сорока до шестидесяти процентов.'},
-{e:'🥛',t:'Точка росы',x:'Точка росы — температура, при которой пар в воздухе начинает превращаться в капельки воды. Поэтому холодный стакан запотевает. Чем влажнее воздух, тем выше точка росы.'},
-{e:'🪡',t:'Поверхностное натяжение',x:'Поверхность воды похожа на тонкую упругую плёнку. Поэтому капля круглая, а водомерка и иголка могут держаться на воде. Мыло уменьшает натяжение, и иголка тонет.'},
-{e:'🫧',t:'Смачивание',x:'Вода смачивает чистое стекло и растекается по нему. На жирной поверхности вода собирается в шарики — это несмачивание. Ртуть на стекле тоже не смачивает.'},
-{e:'🌱',t:'Капилляры',x:'Капилляр — очень узкая трубочка. В ней смачивающая жидкость поднимается вверх. Чем уже трубка, тем выше поднимается вода. Так вода впитывается в полотенце, поднимается по растениям и по дереву.'},
-{e:'🎻',t:'Связь с музыкой',x:'Музыкальные инструменты сделаны из дерева. Дерево впитывает влагу через капилляры. В сухом воздухе оно трескается, во влажном — разбухает. Поэтому в зале поддерживают влажность от сорока до шестидесяти процентов.'}]};
-function glossary(){const all=[['Влажность воздуха','сколько водяного пара в воздухе; измеряют гигрометром'],['Относительная влажность','φ = p / pн · 100 %'],['Точка росы','температура, при которой пар превращается в росу'],['Поверхностное натяжение','упругая «плёнка» на поверхности жидкости'],['Смачивание','жидкость растекается по поверхности (вода на стекле)'],['Несмачивание','жидкость собирается в шарики (вода на жире, ртуть на стекле)'],['Капилляр','очень узкая трубка; жидкость в ней поднимается'],['Гигрометр','прибор для измерения влажности']];
+/* ===== ТЕМА 11: СТЕПЕННАЯ ФУНКЦИЯ ===== */
+const END='Мост построен! Арки получились ровными, как настоящие параболы. Ты настоящий мастер арок!';
+const STORY=['Ты — мастер арок. В городе строят большой мост.','Арки моста — это графики функций! Чтобы арка получилась ровной, нужно понимать степенную функцию.','Изучи функции, построй графики по точкам и ответь на вопросы. Тогда мост откроют!','Начинаем?'];
+LVL.p='Тема 11. Степенная функция';
+const LESSONS={p:[
+{e:'✖️',t:'Что такое степень',x:'Степень — это когда число умножают само на себя. Икс в квадрате — это икс умножить на икс. Икс в кубе — это икс умножить на икс и ещё раз на икс. Например, три в квадрате равно девять.'},
+{e:'📈',t:'Степенная функция',x:'Степенная функция записывается так: игрек равно икс в степени эн. Число эн называют показателем степени. Мы выбираем икс, считаем игрек и ставим точку на графике.'},
+{e:'🌉',t:'Игрек равно икс в квадрате',x:'График называется парабола. Он похож на арку моста, только перевёрнутую. Область определения — все числа. Игрек всегда больше или равен нулю. Функция чётная: график симметричен относительно оси игрек. У минус двух и двух игрек одинаковый: четыре.'},
+{e:'🌀',t:'Игрек равно икс в кубе',x:'График называется кубическая парабола. Функция нечётная: у минус двух и двух игреки противоположные: минус восемь и восемь. Функция возрастает на всей числовой прямой и проходит через начало координат.'},
+{e:'√',t:'Игрек равно корень из икс',x:'Это степенная функция с показателем одна вторая. Корень существует только при икс больше или равном нулю. График — половина параболы, лежащая на боку. Функция возрастает.'},
+{e:'🔀',t:'Игрек равно один делить на икс',x:'Это степенная функция с показателем минус один. График называется гипербола. На ноль делить нельзя, поэтому икс не равен нулю. График состоит из двух ветвей и не пересекает оси.'},
+{e:'🧮',t:'Как строить график по точкам',x:'Сначала составь таблицу: выбери несколько значений икс. Потом посчитай игрек для каждого. Затем поставь точки на координатной плоскости и соедини их плавной линией.'}]};
+function glossary(){const all=[['Степень','число, умноженное само на себя несколько раз: x² = x·x'],['Показатель степени','число n в записи x в степени n'],['Степенная функция','y = xⁿ'],['Парабола','график y = x²; арка моста'],['Чётная функция','график симметричен относительно оси y; y(−x) = y(x)'],['Нечётная функция','y(−x) = −y(x); например y = x³'],['Гипербола','график y = 1/x, две ветви'],['Область определения','значения x, для которых функцию можно вычислить']];
 app.innerHTML='<div class="card"><h2>📖 Словарик</h2><table>'+all.map(a=>`<tr><td><b>${a[0]}</b></td><td>${a[1]}</td><td>${rb(a[0]+'. '+a[1])}</td></tr>`).join('')+'</table><div class="row"><button class="alt" onclick="home()">В меню</button></div></div>'}
-
+const FN={sq:{n:'y = x²',f:x=>x*x,name:'парабола',xmin:-4,xmax:4,ymin:-1,ymax:16,pts:[-3,-2,-1,0,1,2,3]},cu:{n:'y = x³',f:x=>x*x*x,name:'кубическая парабола',xmin:-3,xmax:3,ymin:-27,ymax:27,pts:[-3,-2,-1,0,1,2,3]},rt:{n:'y = √x',f:x=>x>=0?Math.sqrt(x):NaN,name:'ветвь параболы на боку',xmin:-1,xmax:9,ymin:-1,ymax:4,pts:[0,1,4,9]},hy:{n:'y = 1/x',f:x=>x!==0?1/x:NaN,name:'гипербола',xmin:-5,xmax:5,ymin:-5,ymax:5,pts:[-4,-2,-1,-0.5,0.5,1,2,4]}};
+function plotFn(cv,F,cur,pts,showLine=true){const g=cv.getContext('2d'),W=cv.width,H=cv.height,L=40,R=W-20,T0=20,B=H-30;g.clearRect(0,0,W,H);g.fillStyle='#fff';g.fillRect(0,0,W,H);
+const X=x=>L+(x-F.xmin)/(F.xmax-F.xmin)*(R-L),Y=y=>B-(y-F.ymin)/(F.ymax-F.ymin)*(B-T0);
+g.strokeStyle='#e3ebf7';g.lineWidth=1;g.font='13px sans-serif';g.fillStyle='#51627a';
+const sx=(F.xmax-F.xmin)>12?2:1,sy=(F.ymax-F.ymin)>20?5:(F.ymax-F.ymin)>9?2:1;
+for(let x=Math.ceil(F.xmin);x<=F.xmax;x+=sx){g.beginPath();g.moveTo(X(x),T0);g.lineTo(X(x),B);g.stroke();g.textAlign='center';if(x!==0)g.fillText(x,X(x),Y(0)+16)}
+for(let y=Math.ceil(F.ymin/sy)*sy;y<=F.ymax;y+=sy){g.beginPath();g.moveTo(L,Y(y));g.lineTo(R,Y(y));g.stroke();g.textAlign='right';if(y!==0)g.fillText(y,X(0)-5,Y(y)+4)}
+g.strokeStyle='#1f2d3d';g.lineWidth=2.5;g.beginPath();g.moveTo(L,Y(0));g.lineTo(R,Y(0));g.moveTo(X(0),T0);g.lineTo(X(0),B);g.stroke();
+if(showLine){g.strokeStyle='#2d6cdf';g.lineWidth=4;let pen=false;g.beginPath();for(let px=L;px<=R;px+=2){const x=F.xmin+(px-L)/(R-L)*(F.xmax-F.xmin),y=F.f(x);if(isNaN(y)||y>F.ymax*1.2||y<F.ymin*1.2||Math.abs(y)>1e3){pen=false;continue}if(!pen){g.moveTo(px,Y(y));pen=true}else g.lineTo(px,Y(y))}g.stroke()}
+if(pts){g.fillStyle='#d22';pts.forEach(p=>{g.beginPath();g.arc(X(p[0]),Y(p[1]),8,0,6.28);g.fill()})}
+if(cur&&!isNaN(cur[1])){g.fillStyle='#2e9e5b';g.beginPath();g.arc(X(cur[0]),Y(cur[1]),10,0,6.28);g.fill();g.strokeStyle='#fff';g.lineWidth=3;g.stroke()}
+return{X,Y,L,R,B,T0}}
 function labShell(title,body,M,next,intro){
 app.innerHTML=`<div class="card"><h2>${title}</h2>${body}<div class="msg" id="m"></div><div id="ml" style="font-size:22px;margin:8px 0"></div></div>`;
 const done=M.map(()=>false);
 const chk=()=>{M.forEach((m,i)=>{if(!done[i]&&m[1]()){done[i]=true;confetti();beep(700);say(m[2]||'Получилось!')}});
 $('ml').innerHTML=M.map((m,i)=>(done[i]?'✅ ':'⬜ ')+m[0]).join('<br>');
-if(done.every(x=>x)&&!$('nx')){rec('Лаборатория: '+title,'tutor');app.querySelector('.card').insertAdjacentHTML('beforeend','<div class="row"><button class="ok" id="nx">Дальше ➜</button></div>');$('nx').onclick=next}};
+if(done.every(x=>x)&&!$('nx')){rec('Исследование: '+title,'tutor');app.querySelector('.card').insertAdjacentHTML('beforeend','<div class="row"><button class="ok" id="nx">Дальше ➜</button></div>');$('nx').onclick=next}};
 chk();say(intro+' '+M.map(m=>m[0]).join('. '));return chk}
-
-/* ---- Лаборатория 1: музыкальный зал ---- */
-function labHum(next){let H=25,wet=false,back=false;let chk;
-const draw=()=>{const cv=$('cv'),g=cv.getContext('2d');g.clearRect(0,0,700,320);g.fillStyle='#fff';g.fillRect(0,0,700,320);
-const cx=190,cy=270,R=150;[[0,40,'#f5c542'],[40,60,'#2e9e5b'],[60,100,'#4aa3df']].forEach(z=>{g.beginPath();g.arc(cx,cy,R,Math.PI+z[0]/100*Math.PI,Math.PI+z[1]/100*Math.PI);g.arc(cx,cy,R-40,Math.PI+z[1]/100*Math.PI,Math.PI+z[0]/100*Math.PI,true);g.closePath();g.fillStyle=z[2];g.fill()});
-g.fillStyle='#1f2d3d';g.font='bold 18px sans-serif';g.textAlign='center';g.fillText('сухо',cx-110,cy+22);g.fillText('норма',cx,cy-R-8);g.fillText('сыро',cx+110,cy+22);
-const a=Math.PI+H/100*Math.PI;g.strokeStyle='#c0392b';g.lineWidth=6;g.beginPath();g.moveTo(cx,cy);g.lineTo(cx+Math.cos(a)*(R-20),cy+Math.sin(a)*(R-20));g.stroke();g.beginPath();g.arc(cx,cy,10,0,6.28);g.fillStyle='#1f2d3d';g.fill();
-g.font='bold 34px sans-serif';g.fillText(H+' %',cx,cy+60);
-g.font='120px serif';g.fillText('🎻',500,170);
-if(H<40){g.strokeStyle='#5a3a1a';g.lineWidth=3;g.beginPath();g.moveTo(470,90);g.lineTo(485,120);g.lineTo(475,145);g.lineTo(492,175);g.stroke();g.font='bold 20px sans-serif';g.fillStyle='#8a5a00';g.fillText('Дерево сохнет: трещины!',500,230)}
-else if(H>60){g.font='38px serif';['💧','💧','💧'].forEach((d,i)=>g.fillText(d,430+i*70,90+(i%2)*20));g.font='bold 20px sans-serif';g.fillStyle='#1f5fa8';g.fillText('Дерево разбухло: звук глухой',500,230)}
-else{g.font='bold 20px sans-serif';g.fillStyle='#1e7e45';g.fillText('Инструмент в порядке ♪',500,230)}};
-const body=`<canvas id="cv" width="700" height="320" style="width:100%;border-radius:12px;background:#fff"></canvas><div class="row"><button onclick="W.h(10)">💧 Увлажнить</button><button onclick="W.h(-10)">🌬️ Осушить</button></div>`;
-window.W={h(d){H=Math.max(0,Math.min(100,H+d));if(H>=80)wet=true;if(wet&&H>=40&&H<=60)back=true;beep(300+H*4,.1);draw();chk()}};
-chk=labShell('Лаборатория: музыкальный зал',body,[['Доведи влажность до нормы 40–60 %',()=>H>=40&&H<=60,'Влажность в норме. Инструмент в порядке.'],['Увлажни до 80 % и посмотри, что с деревом',()=>H>=80,'Слишком сыро. Дерево разбухло.'],['Осуши зал обратно до нормы',()=>back,'Зал снова в порядке.']],next,'Следи за влажностью в зале.');draw()}
-
-/* ---- Лаборатория 2: точка росы ---- */
-function Td(T,phi){const a=17.27,b=237.7,g=Math.log(phi/100)+a*T/(b+T);return b*g/(a-g)}
-function labDew(next){let Tg=25,phi=60,chk;const air=25;const dots=[];for(let i=0;i<46;i++)dots.push([Math.random(),Math.random(),3+Math.random()*4]);
-const draw=()=>{const cv=$('cv'),g=cv.getContext('2d');g.clearRect(0,0,700,320);g.fillStyle='#fff';g.fillRect(0,0,700,320);
-const td=Td(air,phi);g.fillStyle='#1f2d3d';g.font='bold 20px sans-serif';g.textAlign='left';g.fillText('Воздух: '+air+' °C, влажность '+phi+' %',20,34);g.fillStyle='#c0392b';g.fillText('Точка росы ≈ '+td.toFixed(1)+' °C',20,64);
-const x0=270,y0=80,w=160,h=200;const k=(25-Tg)/25;g.fillStyle=`rgb(${Math.round(200-k*120)},${Math.round(225-k*80)},255)`;g.fillRect(x0,y0,w,h);g.strokeStyle='#1f2d3d';g.lineWidth=4;g.strokeRect(x0,y0,w,h);
-g.fillStyle='#1f2d3d';g.font='bold 22px sans-serif';g.textAlign='center';g.fillText('стакан '+Tg+' °C',x0+w/2,y0+h+32);
-if(Tg<=td){const n=Math.min(46,Math.round((td-Tg)*5+6));g.fillStyle='rgba(255,255,255,.9)';g.strokeStyle='#4aa3df';g.lineWidth=2;for(let i=0;i<n;i++){const d=dots[i];const px=x0+8+d[0]*(w-16),py=y0+8+d[1]*(h-16);g.beginPath();g.arc(px,py,d[2],0,6.28);g.fill();g.stroke()}
-g.fillStyle='#1f5fa8';g.font='bold 20px sans-serif';g.textAlign='left';g.fillText('Роса! Стакан запотел',450,170)}else{g.fillStyle='#51627a';g.font='20px sans-serif';g.textAlign='left';g.fillText('Стакан сухой. Охлаждай дальше ❄️',440,170)}};
-const body=`<canvas id="cv" width="700" height="320" style="width:100%;border-radius:12px;background:#fff"></canvas><div class="row"><label style="font-size:22px">Температура стакана: <input type="range" id="tg" min="0" max="25" step="1" value="25"> </label></div><div class="row"><button class="alt" onclick="W.p(40)">Влажность 40 %</button><button class="alt" onclick="W.p(60)">Влажность 60 %</button><button class="alt" onclick="W.p(80)">Влажность 80 %</button></div>`;
-window.W={p(v){phi=v;beep(400,.1);draw();chk()}};
-chk=labShell('Лаборатория: точка росы',body,[['Влажность 60 %: охлаждай стакан, пока не выступит роса',()=>phi==60&&Tg<=Td(air,60),'Роса выступила при 16 или ниже градусах.'],['Влажность 40 %: воздух суше — роса появится при более низкой температуре',()=>phi==40&&Tg<=Td(air,40),'В сухом воздухе точка росы ниже.'],['Влажность 80 %: роса выступит уже при 21 градусе',()=>phi==80&&Tg<=Td(air,80),'Чем влажнее воздух, тем выше точка росы.']],next,'Охлаждай стакан и смотри, когда появится роса.');
-$('tg').oninput=e=>{Tg=+e.target.value;draw();chk()};draw()}
-
-/* ---- Лаборатория 3: поверхностное натяжение ---- */
-function labTension(next){let st=0,y=0,chk;
-const draw=()=>{const cv=$('cv');if(!cv)return;const g=cv.getContext('2d');g.clearRect(0,0,700,320);g.fillStyle='#fff';g.fillRect(0,0,700,320);
-g.fillStyle='#bfe0ff';g.fillRect(0,170,700,150);g.strokeStyle='#4aa3df';g.lineWidth=3;g.beginPath();g.moveTo(0,170);
-const nx=350,dip=(st===1)?18:0;for(let x=0;x<=700;x+=5){const d=dip*Math.exp(-Math.pow((x-nx)/40,2));g.lineTo(x,170+d)}g.stroke();
-if(st===1){g.fillStyle='#555';g.fillRect(nx-45,170+18-6,90,6)}else if(st>=2){g.fillStyle='#555';g.save();g.translate(nx,170+y);g.rotate(y>80?0.5:0);g.fillRect(-45,-3,90,6);g.restore()}
-g.fillStyle='#1f2d3d';g.font='bold 20px sans-serif';g.textAlign='left';g.fillText(st===0?'Положи иголку на воду':st===1?'Иголка держится на «плёнке»!':st===2?'Мыло ослабило натяжение...':'Иголка утонула',20,36);
-g.beginPath();g.ellipse(600,60,26,34,0,0,6.28);g.fillStyle='#bfe0ff';g.fill();g.strokeStyle='#4aa3df';g.stroke();g.fillStyle='#1f2d3d';g.font='16px sans-serif';g.textAlign='center';g.fillText('капля круглая',600,115);
-if(st===2){y+=4;if(y>=130){st=3;chk()}}if(cv.isConnected)requestAnimationFrame(draw)};
-const body=`<canvas id="cv" width="700" height="320" style="width:100%;border-radius:12px;background:#fff"></canvas><div class="row"><button onclick="W.n()">🪡 Положить иголку</button><button onclick="W.s()">🧼 Капнуть мыло</button><button class="alt" onclick="W.r()">🔄 Заново</button></div>`;
-window.W={n(){if(st===0){st=1;y=0;beep(500,.1);chk()}},s(){if(st===1){st=2;beep(300,.2)}},r(){st=0;y=0}};
-chk=labShell('Лаборатория: поверхностное натяжение',body,[['Положи иголку на воду — она не тонет!',()=>st>=1,'Поверхность воды держит иголку.'],['Капни мыло — иголка утонет',()=>st===3,'Мыло уменьшает поверхностное натяжение.']],next,'Проведи опыт с иголкой.');draw()}
-
-/* ---- Лаборатория 4: капилляры ---- */
-function labCap(next){let t=0,anim=false,picked={hi:false,lo:false},chk;const W3=[12,26,52],Hh=[160,80,40],XS=[140,350,560];
-const draw=()=>{const cv=$('cv');if(!cv)return;const g=cv.getContext('2d');g.clearRect(0,0,700,340);g.fillStyle='#fff';g.fillRect(0,0,700,340);
-g.fillStyle='#bfe0ff';g.fillRect(0,260,700,80);g.strokeStyle='#4aa3df';g.lineWidth=3;g.beginPath();g.moveTo(0,260);g.lineTo(700,260);g.stroke();
-for(let i=0;i<3;i++){const w=W3[i],x=XS[i];const top=260-Hh[i]*t;g.fillStyle='#bfe0ff';g.fillRect(x-w/2,top,w,300-top);g.strokeStyle='#1f2d3d';g.lineWidth=4;g.beginPath();g.moveTo(x-w/2,40);g.lineTo(x-w/2,300);g.moveTo(x+w/2,40);g.lineTo(x+w/2,300);g.stroke();
-g.fillStyle='#1f2d3d';g.font='bold 18px sans-serif';g.textAlign='center';g.fillText(['узкая','средняя','широкая'][i],x,28)}
-if(anim){t=Math.min(1,t+0.02);if(t>=1){anim=false;chk()}}if(cv.isConnected)requestAnimationFrame(draw)};
-const body=`<canvas id="cv" width="700" height="340" style="width:100%;border-radius:12px;background:#fff;cursor:pointer"></canvas><div class="row"><button onclick="W.go()">⬇️ Опустить трубки в воду</button></div>`;
-window.W={go(){if(t===0){anim=true;beep(400,.2)}}};
-chk=labShell('Лаборатория: капилляры',body,[['Опусти трубки в воду и смотри',()=>t>=1,'Вода поднялась в трубках.'],['Нажми на трубку, где вода поднялась ВЫШЕ всего',()=>picked.hi,'Верно! Чем уже трубка, тем выше вода.'],['Нажми на самую широкую трубку, где вода ниже всего',()=>picked.lo,'Верно! В широкой трубке вода поднялась меньше.']],next,'Опусти трубки в воду и сравни.');
-$('cv').onclick=e=>{if(t<1)return;const r=$('cv').getBoundingClientRect(),x=(e.clientX-r.left)*700/r.width;const i=XS.map((v,j)=>[Math.abs(v-x),j]).sort((a,b)=>a[0]-b[0])[0][1];if(i===0)picked.hi=true;if(i===2)picked.lo=true;beep(600,.1);chk()};draw()}
-
+/* ---- Исследователь ---- */
+function explore(next){let key='sq',x=2,seen={sq:false,cu:false,rt:false,hy:false},sq2=false,sq_2=false,cu2=false,cu_2=false,chk;
+const draw=()=>{const F=FN[key],y=F.f(x);plotFn($('cv'),F,[x,y]);$('info').innerHTML=`<b>${F.n}</b> — ${F.name}<br>x = <b>${x}</b> → y = <b>${isNaN(y)?'не существует':Math.round(y*100)/100}</b>`};
+const body=`<canvas id="cv" width="700" height="360" style="width:100%;border-radius:12px;background:#fff"></canvas><div class="row"><button class="alt" onclick="W.k('sq')">y = x²</button><button class="alt" onclick="W.k('cu')">y = x³</button><button class="alt" onclick="W.k('rt')">y = √x</button><button class="alt" onclick="W.k('hy')">y = 1/x</button></div>
+<div class="row"><label style="font-size:22px">x: <input type="range" id="sx" min="-4" max="4" step="1" value="2" style="width:260px"></label></div><div class="row" style="font-size:24px" id="info"></div>`;
+window.W={k(k){key=k;seen[k]=true;beep(500,.1);draw();chk()}};
+chk=labShell('Исследуем функции',body,[['Посмотри все 4 графика: нажми каждую кнопку',()=>seen.sq&&seen.cu&&seen.rt&&seen.hy,'Парабола, кубическая парабола, корень и гипербола.'],['y = x²: поставь x = 2 и потом x = −2. Что с y?',()=>sq2&&sq_2,'У x и минус x значение игрек одинаковое. Функция чётная.'],['y = x³: поставь x = 2 и потом x = −2. Что с y?',()=>cu2&&cu_2,'Игреки противоположные: восемь и минус восемь. Функция нечётная.']],next,'Выбирай функцию и двигай ползунок икс.');
+$('sx').oninput=e=>{x=+e.target.value;if(key==='sq'){if(x===2)sq2=true;if(x===-2)sq_2=true}if(key==='cu'){if(x===2)cu2=true;if(x===-2)cu_2=true}draw();chk()};draw()}
+/* ---- Построй график ---- */
+const PL=[['sq',[-2,-1,0,1,2]],['cu',[-2,-1,0,1,2]],['rt',[0,1,4,9]]];
+function plotGame(next){let pi=0;go();
+function go(){const [k,xs]=PL[pi],F=FN[k];let placed=[],j=0;
+app.innerHTML=`<div class="card"><h2>Построй график ${pi+1} из ${PL.length}: ${F.n}</h2><table style="margin-bottom:8px"><tr><th>x</th>${xs.map(v=>'<td>'+v+'</td>').join('')}</tr><tr><th>y</th>${xs.map(v=>'<td>'+Math.round(F.f(v)*100)/100+'</td>').join('')}</tr></table><div class="msg" id="m"></div><canvas id="gc" width="700" height="420" style="width:100%;border:3px solid var(--blue);border-radius:12px;cursor:crosshair"></canvas>
+<div class="row"><button class="soft" onclick="gHint()">💡 Подсказка</button>${rb('Построй график. Нажимай на сетку, чтобы поставить точки из таблицы.')}</div></div>`;
+const cv=$('gc');const geo=plotFn(cv,F,null,[],false);
+const ask=()=>{const x=xs[j];$('m').innerHTML='Поставь точку: x = <b>'+x+'</b>, y = <b>'+Math.round(F.f(x)*100)/100+'</b>';say('Поставь точку. x равно '+x+', y равно '+Math.round(F.f(x)*100)/100)};
+window.gHint=()=>{hnt++;const x=xs[j];if(x===undefined)return;$('m').innerHTML='<span class="try">Найди x = '+x+' на нижней оси, потом y = '+Math.round(F.f(x)*100)/100+' на левой. Точка там, где они встретятся.</span>';say('Найди x на нижней оси, потом y на левой оси.')};
+cv.onclick=e=>{if(j>=xs.length)return;const r=cv.getBoundingClientRect(),s=cv.width/r.width,mx=(e.clientX-r.left)*s,my=(e.clientY-r.top)*s;
+const gx=Math.round(F.xmin+(mx-geo.L)/(geo.R-geo.L)*(F.xmax-F.xmin)),gy=Math.round(F.ymin+(geo.B-my)/(geo.B-geo.T0)*(F.ymax-F.ymin));const x=xs[j],y=F.f(x);
+const tol=(F.ymax-F.ymin)>20?1.5:0.5;
+if(gx===x&&Math.abs(my-geo.Y(y))<18){placed.push([x,y]);j++;beep(700);plotFn(cv,F,null,placed,false);
+ if(j===xs.length){plotFn(cv,F,null,placed,true);rec('График '+F.n,mis,hnt);mis=0;hnt=0;confetti();say('Молодец! График готов. Это '+F.name);$('m').innerHTML='<span class="good">График готов! Это '+F.name+' ⭐</span>';app.querySelector('.card').insertAdjacentHTML('beforeend','<div class="row"><button class="ok" id="nx">'+(pi<PL.length-1?'Следующий график ➜':'Дальше ➜')+'</button></div>');$('nx').onclick=()=>{pi++;pi<PL.length?go():next()}}else{say('Правильно');ask()}}
+else{mis++;beep(250);$('m').innerHTML='<span class="try">Почти! Нажми «Подсказка» и попробуй ещё раз.</span>';say('Попробуй ещё раз')}};
+ask()}}
 /* ---- Вопросы ---- */
-const QV=[
-{e:'🌫️',q:'Влажность воздуха показывает…',a:['сколько в воздухе водяного пара','какая в воздухе температура','какое давление воздуха'],c:0,h:'Влажность — про водяной пар.'},
-{e:'📏',q:'Каким прибором измеряют влажность?',a:['Гигрометром','Термометром','Барометром'],c:0,h:'Гигро — значит влажный.'},
-{e:'🥛',q:'Когда выпадает роса?',a:['Когда воздух охладился до точки росы','Когда воздух нагрелся','Когда нет водяного пара'],c:0,h:'Холодный стакан запотевает.'},
-{e:'💧',q:'Почему капля воды круглая?',a:['Из-за поверхностного натяжения','Из-за ветра','Из-за цвета воды'],c:0,h:'Поверхность воды как упругая плёнка.'},
-{e:'🍳',q:'Вода на жирной сковороде собирается в шарики. Это…',a:['несмачивание','смачивание','кипение'],c:0,h:'Вода не растекается по поверхности.'},
-{e:'🪟',q:'Вода на чистом стекле растекается. Это…',a:['смачивание','несмачивание','замерзание'],c:0,h:'Растекается — значит смачивает.'},
-{e:'🧻',q:'Что относится к капиллярным явлениям?',a:['Полотенце впитывает воду','Камень падает в воду','Лёд тает'],c:0,h:'Вода идёт по узким каналам.'},
-{e:'🎻',q:'Какая влажность хороша для музыкальных инструментов?',a:['40–60 %','10–20 %','90–100 %'],c:0,h:'Не слишком сухо и не слишком сыро.'}];
-let qi=0,qt=0;const nQ=QV.length,nC=3;
-function startV(){RES=[];curLevel='v';mis=0;hnt=0;qi=0;qt=0;labHum(()=>labDew(()=>labTension(()=>labCap(()=>qAsk()))))}
-function qAsk(){mis=0;hnt=0;if(qi>=nQ)return calc();const x=QV[qi];const opts=shuffle(x.a.map((t,i)=>({t,i})));
+const QP=[
+{e:'✖️',q:'Чему равно 3² (три в квадрате)?',a:['9','6','5'],c:0,h:'3² = 3 · 3.'},
+{e:'🌉',q:'Как называется график y = x²?',a:['Парабола','Гипербола','Прямая'],c:0,h:'Он похож на арку моста.'},
+{e:'🔀',q:'Как называется график y = 1/x?',a:['Гипербола','Парабола','Окружность'],c:0,h:'У него две ветви.'},
+{e:'🚫',q:'Чему равен y = 1/x при x = 0?',a:['Не существует: на ноль делить нельзя','0','1'],c:0,h:'Делить на ноль нельзя.'},
+{e:'🪞',q:'Функция y = x² при x = 2 и при x = −2 даёт…',a:['одинаковый y (4 и 4)','разные y','y = 0'],c:0,h:'(−2)² = (−2)·(−2) = 4.'},
+{e:'🔄',q:'Функция y = x³ при x = −2 даёт…',a:['−8','8','−6'],c:0,h:'(−2)·(−2)·(−2) = −8.'},
+{e:'√',q:'Функция y = √x определена при…',a:['x ≥ 0','любом x','x < 0'],c:0,h:'Корень из отрицательного числа в школе не берём.'},
+{e:'📍',q:'Через какую точку проходят графики y = x² и y = x³?',a:['(0; 0)','(1; 2)','(0; 1)'],c:0,h:'0² = 0 и 0³ = 0.'}];
+let qi=0,qt=0;const nQ=QP.length,nC=3;
+function startP(){RES=[];curLevel='p';mis=0;hnt=0;qi=0;qt=0;explore(()=>plotGame(()=>qAsk()))}
+function qAsk(){mis=0;hnt=0;if(qi>=nQ)return calc();const x=QP[qi];const opts=shuffle(x.a.map((t,i)=>({t,i})));
 app.innerHTML=`<div class="card"><div class="prog"><i style="width:${qi/(nQ+nC)*100}%"></i></div><div class="emoji">${x.e}</div><h2 style="text-align:center">${x.q}</h2><div class="msg" id="m"></div><div class="row">${rb(x.q+' '+x.a.join('. '))}</div>
 <div class="row">${opts.map(o=>`<button class="big" style="font-size:22px;min-width:240px" onclick="qPick(${o.i===x.c},this)">${o.t}</button>`).join('')}</div><div class="row"><button class="soft" onclick="hnt++;$('hh').style.display='block';sayNow('${x.h}')">💡 Подсказка</button></div><div class="hint" id="hh" style="display:none">${x.h}</div></div>`;say(x.q)}
-function qPick(ok,b){if(ok){rec('Вопрос: '+QV[qi].q,mis,hnt);$('m').innerHTML='<span class="good">'+rp()+' ⭐</span>';say('Правильно!');beep(700);confetti();qi++;setTimeout(qAsk,1000)}else{mis++;$('m').innerHTML='<span class="try">Почти! Открой подсказку и попробуй ещё раз.</span>';say('Попробуй ещё раз');b.style.opacity=.35;beep(250)}}
-/* расчёты */
+function qPick(ok,b){if(ok){rec('Вопрос: '+QP[qi].q,mis,hnt);$('m').innerHTML='<span class="good">'+rp()+' ⭐</span>';say('Правильно!');beep(700);confetti();qi++;setTimeout(qAsk,1000)}else{mis++;$('m').innerHTML='<span class="try">Почти! Открой подсказку и попробуй ещё раз.</span>';say('Попробуй ещё раз');b.style.opacity=.35;beep(250)}}
 let ct=0,ctask;
 function calc(){ct=0;calcAsk()}
-function genC(k){if(k<2){const pn=[2,3,4][Math.floor(Math.random()*3)],f=[25,50,75][Math.floor(Math.random()*3)];const p=pn*f/100;return{t:`Относительная влажность воздуха φ = p / pн · 100 %. Давление пара p = ${p} кПа, давление насыщенного пара pн = ${pn} кПа. Найди φ.`,ans:f,u:'%',f:'φ = p / pн · 100 %',h:`Подставь: ${p} / ${pn} · 100`,name:'Расчёт влажности'}}
-const td=[10,16,21][Math.floor(Math.random()*3)],yes=Math.random()<.5,tg=yes?td-4:td+4;return{t:`Точка росы воздуха ${td} °C. Стакан охладили до ${tg} °C. Выпадет ли роса? Введи 1, если ДА, и 0, если НЕТ.`,ans:yes?1:0,u:'(1 — да, 0 — нет)',f:'Роса выпадает, если стакан холоднее точки росы',h:`Сравни ${tg} и ${td}: роса есть, если стакан холоднее точки росы.`,name:'Точка росы: выпадет ли роса'}}
-function calcAsk(){if(ct>=nC)return showResults("lesson('v','startV()')");ctask=genC(ct);mis=0;hnt=0;
-app.innerHTML=`<div class="card"><div class="prog"><i style="width:${(nQ+ct)/(nQ+nC)*100}%"></i></div><h2>Задача ${ct+1} из ${nC}</h2><p>${ctask.t}</p><p class="small">Дано → Найти → Решение → Ответ</p>
-<div class="row"><span>Ответ: </span><input type="number" id="ans" inputmode="decimal"><span>${ctask.u}</span></div><div class="msg" id="m"></div>
+function genC(k){if(k<2){const n=k===0?2:3,x=n===2?[3,4,5,6][Math.floor(Math.random()*4)]:[2,3,4][Math.floor(Math.random()*3)];return{t:`Функция y = x${n===2?'²':'³'}. Найди y при x = ${x}.`,ans:Math.pow(x,n),u:'',f:'y = x'+(n===2?'²':'³')+(n===2?' = x · x':' = x · x · x'),h:`Посчитай: ${Array(n).fill(x).join(' · ')}`,name:'Значение y = x'+(n===2?'²':'³')}}
+const x=[-2,-3][Math.floor(Math.random()*2)];return{t:`Функция y = x². Найди y при x = ${x}.`,ans:x*x,u:'',f:'y = x · x. Минус на минус даёт плюс',h:`(${x}) · (${x}) = ?`,name:'Значение y = x² при отрицательном x'}}
+function calcAsk(){if(ct>=nC)return showResults("lesson('p','startP()')");ctask=genC(ct);mis=0;hnt=0;
+app.innerHTML=`<div class="card"><div class="prog"><i style="width:${(nQ+ct)/(nQ+nC)*100}%"></i></div><h2>Задача ${ct+1} из ${nC}</h2><p style="font-size:26px">${ctask.t}</p><p class="small">Дано → Найти → Решение → Ответ</p>
+<div class="row"><span>Ответ: </span><input type="number" id="ans" inputmode="decimal"></div><div class="msg" id="m"></div>
 <div class="row"><button class="ok" onclick="cCheck()">Проверить</button><button class="soft" onclick="cHint(1)">💡 Подсказка 1</button><button class="soft" onclick="cHint(2)">💡 Подсказка 2</button>${rb(ctask.t)}</div><div class="hint" id="hh" style="display:none"></div></div>`;say(ctask.t)}
 function cHint(n){hnt++;const h=$('hh');h.style.display='block';h.innerHTML=n===1?'Формула: <b>'+ctask.f+'</b>':ctask.h;say(h.textContent)}
 function cCheck(){const v=parseFloat($('ans').value.replace(',','.'));if(Math.abs(v-ctask.ans)<0.01){rec('Задача '+(ct+1)+': '+ctask.name,mis,hnt);$('m').innerHTML='<span class="good">'+rp()+' ⭐</span>';say('Верно!');beep(700);confetti();ct++;setTimeout(calcAsk,1300)}else{mis++;$('m').innerHTML='<span class="try">Пока не то. Открой подсказку и попробуй ещё раз.</span>';say('Попробуй ещё раз');beep(250);if(mis>=2)cHint(2)}}
 function home(){const txt=STORY.join(' ');
-app.innerHTML=`<div class="card"><div class="emoji">🎻🪕</div><h2 style="text-align:center">Хранитель оркестра</h2>${STORY.map(p=>'<p style="text-align:center;font-size:26px">'+p+'</p>').join('')}
-<div class="row">${rb(txt)}</div><div class="row"><button class="big ok" onclick="lesson('v','startV()')">🎻 Начать!</button></div></div>`;say(txt)}
+app.innerHTML=`<div class="card"><div class="emoji">🌉📈</div><h2 style="text-align:center">Мастер арок</h2>${STORY.map(p=>'<p style="text-align:center;font-size:26px">'+p+'</p>').join('')}
+<div class="row">${rb(txt)}</div><div class="row"><button class="big ok" onclick="lesson('p','startP()')">🌉 Начать!</button></div></div>`;say(txt)}
 
 home();
 </script></body></html>
