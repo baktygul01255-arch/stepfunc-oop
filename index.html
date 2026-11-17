@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Мастер арок · Степенная функция</title>
+<title>Мастер арок · Уровень А</title>
 <style>
 :root{--bg:#f3f7fb;--card:#fff;--ink:#1f2d3d;--blue:#2d6cdf;--green:#2e9e5b;--orange:#f08a24;--soft:#e6eefb}
 *{box-sizing:border-box}
@@ -28,7 +28,7 @@ input[type=text],input[type=number]{font:inherit;padding:12px;border:3px solid v
 #balloon{font-size:130px;transition:transform .25s;display:inline-block}
 .hint{background:#fff8e1;border-radius:12px;padding:10px;font-size:20px}
 @media print{.top,button,.small,#rep ~ *{display:none!important}body{background:#fff;font-size:16px}.card{box-shadow:none}.card:not(#rep){display:none}input,select{border:none!important}}</style></head><body><div class="wrap">
-<div class="top"><h1>🌉 Мастер арок</h1><div><button class="soft" onclick="home()">🏠 Меню</button><button class="soft" id="vc" onclick="toggleVoice()">🗣️ Озвучка вкл.</button><button class="soft" onclick="glossary()">📖 Словарик</button><button class="soft" id="snd" onclick="toggleSound()">🔇 Звуки выкл.</button></div></div>
+<div class="top"><h1>🌉 Мастер арок · А</h1><div><button class="soft" onclick="home()">🏠 Меню</button><button class="soft" id="vc" onclick="toggleVoice()">🗣️ Озвучка вкл.</button><button class="soft" onclick="glossary()">📖 Словарик</button><button class="soft" id="snd" onclick="toggleSound()">🔇 Звуки выкл.</button></div></div>
 <div id="app"></div>
 <p class="small">Тут нельзя проиграть. Кнопка «🔊 Прочитать» читает текст вслух; озвучку можно выключить вверху. Ошибся — попробуй ещё раз. Подсказка всегда рядом.</p>
 </div>
@@ -84,92 +84,72 @@ function updRes(){const a=avg();$('tot').textContent=a;$('gr2').innerHTML='<b>О
 function done(next){showResults(next)}
 
 
-/* ===== ТЕМА 11: СТЕПЕННАЯ ФУНКЦИЯ ===== */
-const END='Мост построен! Арки получились ровными, как настоящие параболы. Ты настоящий мастер арок!';
-const STORY=['Ты — мастер арок. В городе строят большой мост.','Арки моста — это графики функций! Чтобы арка получилась ровной, нужно понимать степенную функцию.','Изучи функции, построй графики по точкам и ответь на вопросы. Тогда мост откроют!','Начинаем?'];
-LVL.p='Тема 11. Степенная функция';
-const LESSONS={p:[
-{e:'✖️',t:'Что такое степень',x:'Степень — это когда число умножают само на себя. Икс в квадрате — это икс умножить на икс. Икс в кубе — это икс умножить на икс и ещё раз на икс. Например, три в квадрате равно девять.'},
-{e:'📈',t:'Степенная функция',x:'Степенная функция записывается так: игрек равно икс в степени эн. Число эн называют показателем степени. Мы выбираем икс, считаем игрек и ставим точку на графике.'},
-{e:'🌉',t:'Игрек равно икс в квадрате',x:'График называется парабола. Он похож на арку моста, только перевёрнутую. Область определения — все числа. Игрек всегда больше или равен нулю. Функция чётная: график симметричен относительно оси игрек. У минус двух и двух игрек одинаковый: четыре.'},
-{e:'🌀',t:'Игрек равно икс в кубе',x:'График называется кубическая парабола. Функция нечётная: у минус двух и двух игреки противоположные: минус восемь и восемь. Функция возрастает на всей числовой прямой и проходит через начало координат.'},
-{e:'√',t:'Игрек равно корень из икс',x:'Это степенная функция с показателем одна вторая. Корень существует только при икс больше или равном нулю. График — половина параболы, лежащая на боку. Функция возрастает.'},
-{e:'🔀',t:'Игрек равно один делить на икс',x:'Это степенная функция с показателем минус один. График называется гипербола. На ноль делить нельзя, поэтому икс не равен нулю. График состоит из двух ветвей и не пересекает оси.'},
-{e:'🧮',t:'Как строить график по точкам',x:'Сначала составь таблицу: выбери несколько значений икс. Потом посчитай игрек для каждого. Затем поставь точки на координатной плоскости и соедини их плавной линией.'}]};
-function glossary(){const all=[['Степень','число, умноженное само на себя несколько раз: x² = x·x'],['Показатель степени','число n в записи x в степени n'],['Степенная функция','y = xⁿ'],['Парабола','график y = x²; арка моста'],['Чётная функция','график симметричен относительно оси y; y(−x) = y(x)'],['Нечётная функция','y(−x) = −y(x); например y = x³'],['Гипербола','график y = 1/x, две ветви'],['Область определения','значения x, для которых функцию можно вычислить']];
-app.innerHTML='<div class="card"><h2>📖 Словарик</h2><table>'+all.map(a=>`<tr><td><b>${a[0]}</b></td><td>${a[1]}</td><td>${rb(a[0]+'. '+a[1])}</td></tr>`).join('')+'</table><div class="row"><button class="alt" onclick="home()">В меню</button></div></div>'}
-const FN={sq:{n:'y = x²',f:x=>x*x,name:'парабола',xmin:-4,xmax:4,ymin:-1,ymax:16,pts:[-3,-2,-1,0,1,2,3]},cu:{n:'y = x³',f:x=>x*x*x,name:'кубическая парабола',xmin:-3,xmax:3,ymin:-27,ymax:27,pts:[-3,-2,-1,0,1,2,3]},rt:{n:'y = √x',f:x=>x>=0?Math.sqrt(x):NaN,name:'ветвь параболы на боку',xmin:-1,xmax:9,ymin:-1,ymax:4,pts:[0,1,4,9]},hy:{n:'y = 1/x',f:x=>x!==0?1/x:NaN,name:'гипербола',xmin:-5,xmax:5,ymin:-5,ymax:5,pts:[-4,-2,-1,-0.5,0.5,1,2,4]}};
-function plotFn(cv,F,cur,pts,showLine=true){const g=cv.getContext('2d'),W=cv.width,H=cv.height,L=40,R=W-20,T0=20,B=H-30;g.clearRect(0,0,W,H);g.fillStyle='#fff';g.fillRect(0,0,W,H);
-const X=x=>L+(x-F.xmin)/(F.xmax-F.xmin)*(R-L),Y=y=>B-(y-F.ymin)/(F.ymax-F.ymin)*(B-T0);
-g.strokeStyle='#e3ebf7';g.lineWidth=1;g.font='13px sans-serif';g.fillStyle='#51627a';
-const sx=(F.xmax-F.xmin)>12?2:1,sy=(F.ymax-F.ymin)>20?5:(F.ymax-F.ymin)>9?2:1;
-for(let x=Math.ceil(F.xmin);x<=F.xmax;x+=sx){g.beginPath();g.moveTo(X(x),T0);g.lineTo(X(x),B);g.stroke();g.textAlign='center';if(x!==0)g.fillText(x,X(x),Y(0)+16)}
-for(let y=Math.ceil(F.ymin/sy)*sy;y<=F.ymax;y+=sy){g.beginPath();g.moveTo(L,Y(y));g.lineTo(R,Y(y));g.stroke();g.textAlign='right';if(y!==0)g.fillText(y,X(0)-5,Y(y)+4)}
-g.strokeStyle='#1f2d3d';g.lineWidth=2.5;g.beginPath();g.moveTo(L,Y(0));g.lineTo(R,Y(0));g.moveTo(X(0),T0);g.lineTo(X(0),B);g.stroke();
-if(showLine){g.strokeStyle='#2d6cdf';g.lineWidth=4;let pen=false;g.beginPath();for(let px=L;px<=R;px+=2){const x=F.xmin+(px-L)/(R-L)*(F.xmax-F.xmin),y=F.f(x);if(isNaN(y)||y>F.ymax*1.2||y<F.ymin*1.2||Math.abs(y)>1e3){pen=false;continue}if(!pen){g.moveTo(px,Y(y));pen=true}else g.lineTo(px,Y(y))}g.stroke()}
-if(pts){g.fillStyle='#d22';pts.forEach(p=>{g.beginPath();g.arc(X(p[0]),Y(p[1]),8,0,6.28);g.fill()})}
-if(cur&&!isNaN(cur[1])){g.fillStyle='#2e9e5b';g.beginPath();g.arc(X(cur[0]),Y(cur[1]),10,0,6.28);g.fill();g.strokeStyle='#fff';g.lineWidth=3;g.stroke()}
-return{X,Y,L,R,B,T0}}
-function labShell(title,body,M,next,intro){
-app.innerHTML=`<div class="card"><h2>${title}</h2>${body}<div class="msg" id="m"></div><div id="ml" style="font-size:22px;margin:8px 0"></div></div>`;
-const done=M.map(()=>false);
-const chk=()=>{M.forEach((m,i)=>{if(!done[i]&&m[1]()){done[i]=true;confetti();beep(700);say(m[2]||'Получилось!')}});
-$('ml').innerHTML=M.map((m,i)=>(done[i]?'✅ ':'⬜ ')+m[0]).join('<br>');
-if(done.every(x=>x)&&!$('nx')){rec('Исследование: '+title,'tutor');app.querySelector('.card').insertAdjacentHTML('beforeend','<div class="row"><button class="ok" id="nx">Дальше ➜</button></div>');$('nx').onclick=next}};
-chk();say(intro+' '+M.map(m=>m[0]).join('. '));return chk}
-/* ---- Исследователь ---- */
-function explore(next){let key='sq',x=2,seen={sq:false,cu:false,rt:false,hy:false},sq2=false,sq_2=false,cu2=false,cu_2=false,chk;
-const draw=()=>{const F=FN[key],y=F.f(x);plotFn($('cv'),F,[x,y]);$('info').innerHTML=`<b>${F.n}</b> — ${F.name}<br>x = <b>${x}</b> → y = <b>${isNaN(y)?'не существует':Math.round(y*100)/100}</b>`};
-const body=`<canvas id="cv" width="700" height="360" style="width:100%;border-radius:12px;background:#fff"></canvas><div class="row"><button class="alt" onclick="W.k('sq')">y = x²</button><button class="alt" onclick="W.k('cu')">y = x³</button><button class="alt" onclick="W.k('rt')">y = √x</button><button class="alt" onclick="W.k('hy')">y = 1/x</button></div>
-<div class="row"><label style="font-size:22px">x: <input type="range" id="sx" min="-4" max="4" step="1" value="2" style="width:260px"></label></div><div class="row" style="font-size:24px" id="info"></div>`;
-window.W={k(k){key=k;seen[k]=true;beep(500,.1);draw();chk()}};
-chk=labShell('Исследуем функции',body,[['Посмотри все 4 графика: нажми каждую кнопку',()=>seen.sq&&seen.cu&&seen.rt&&seen.hy,'Парабола, кубическая парабола, корень и гипербола.'],['y = x²: поставь x = 2 и потом x = −2. Что с y?',()=>sq2&&sq_2,'У x и минус x значение игрек одинаковое. Функция чётная.'],['y = x³: поставь x = 2 и потом x = −2. Что с y?',()=>cu2&&cu_2,'Игреки противоположные: восемь и минус восемь. Функция нечётная.']],next,'Выбирай функцию и двигай ползунок икс.');
-$('sx').oninput=e=>{x=+e.target.value;if(key==='sq'){if(x===2)sq2=true;if(x===-2)sq_2=true}if(key==='cu'){if(x===2)cu2=true;if(x===-2)cu_2=true}draw();chk()};draw()}
-/* ---- Построй график ---- */
-const PL=[['sq',[-2,-1,0,1,2]],['cu',[-2,-1,0,1,2]],['rt',[0,1,4,9]]];
-function plotGame(next){let pi=0;go();
-function go(){const [k,xs]=PL[pi],F=FN[k];let placed=[],j=0;
-app.innerHTML=`<div class="card"><h2>Построй график ${pi+1} из ${PL.length}: ${F.n}</h2><table style="margin-bottom:8px"><tr><th>x</th>${xs.map(v=>'<td>'+v+'</td>').join('')}</tr><tr><th>y</th>${xs.map(v=>'<td>'+Math.round(F.f(v)*100)/100+'</td>').join('')}</tr></table><div class="msg" id="m"></div><canvas id="gc" width="700" height="420" style="width:100%;border:3px solid var(--blue);border-radius:12px;cursor:crosshair"></canvas>
-<div class="row"><button class="soft" onclick="gHint()">💡 Подсказка</button>${rb('Построй график. Нажимай на сетку, чтобы поставить точки из таблицы.')}</div></div>`;
-const cv=$('gc');const geo=plotFn(cv,F,null,[],false);
-const ask=()=>{const x=xs[j];$('m').innerHTML='Поставь точку: x = <b>'+x+'</b>, y = <b>'+Math.round(F.f(x)*100)/100+'</b>';say('Поставь точку. x равно '+x+', y равно '+Math.round(F.f(x)*100)/100)};
-window.gHint=()=>{hnt++;const x=xs[j];if(x===undefined)return;$('m').innerHTML='<span class="try">Найди x = '+x+' на нижней оси, потом y = '+Math.round(F.f(x)*100)/100+' на левой. Точка там, где они встретятся.</span>';say('Найди x на нижней оси, потом y на левой оси.')};
-cv.onclick=e=>{if(j>=xs.length)return;const r=cv.getBoundingClientRect(),s=cv.width/r.width,mx=(e.clientX-r.left)*s,my=(e.clientY-r.top)*s;
-const gx=Math.round(F.xmin+(mx-geo.L)/(geo.R-geo.L)*(F.xmax-F.xmin)),gy=Math.round(F.ymin+(geo.B-my)/(geo.B-geo.T0)*(F.ymax-F.ymin));const x=xs[j],y=F.f(x);
-const tol=(F.ymax-F.ymin)>20?1.5:0.5;
-if(gx===x&&Math.abs(my-geo.Y(y))<18){placed.push([x,y]);j++;beep(700);plotFn(cv,F,null,placed,false);
- if(j===xs.length){plotFn(cv,F,null,placed,true);rec('График '+F.n,mis,hnt);mis=0;hnt=0;confetti();say('Молодец! График готов. Это '+F.name);$('m').innerHTML='<span class="good">График готов! Это '+F.name+' ⭐</span>';app.querySelector('.card').insertAdjacentHTML('beforeend','<div class="row"><button class="ok" id="nx">'+(pi<PL.length-1?'Следующий график ➜':'Дальше ➜')+'</button></div>');$('nx').onclick=()=>{pi++;pi<PL.length?go():next()}}else{say('Правильно');ask()}}
-else{mis++;beep(250);$('m').innerHTML='<span class="try">Почти! Нажми «Подсказка» и попробуй ещё раз.</span>';say('Попробуй ещё раз')}};
-ask()}}
-/* ---- Вопросы ---- */
-const QP=[
-{e:'✖️',q:'Чему равно 3² (три в квадрате)?',a:['9','6','5'],c:0,h:'3² = 3 · 3.'},
-{e:'🌉',q:'Как называется график y = x²?',a:['Парабола','Гипербола','Прямая'],c:0,h:'Он похож на арку моста.'},
-{e:'🔀',q:'Как называется график y = 1/x?',a:['Гипербола','Парабола','Окружность'],c:0,h:'У него две ветви.'},
-{e:'🚫',q:'Чему равен y = 1/x при x = 0?',a:['Не существует: на ноль делить нельзя','0','1'],c:0,h:'Делить на ноль нельзя.'},
-{e:'🪞',q:'Функция y = x² при x = 2 и при x = −2 даёт…',a:['одинаковый y (4 и 4)','разные y','y = 0'],c:0,h:'(−2)² = (−2)·(−2) = 4.'},
-{e:'🔄',q:'Функция y = x³ при x = −2 даёт…',a:['−8','8','−6'],c:0,h:'(−2)·(−2)·(−2) = −8.'},
-{e:'√',q:'Функция y = √x определена при…',a:['x ≥ 0','любом x','x < 0'],c:0,h:'Корень из отрицательного числа в школе не берём.'},
-{e:'📍',q:'Через какую точку проходят графики y = x² и y = x³?',a:['(0; 0)','(1; 2)','(0; 1)'],c:0,h:'0² = 0 и 0³ = 0.'}];
-let qi=0,qt=0;const nQ=QP.length,nC=3;
-function startP(){RES=[];curLevel='p';mis=0;hnt=0;qi=0;qt=0;explore(()=>plotGame(()=>qAsk()))}
-function qAsk(){mis=0;hnt=0;if(qi>=nQ)return calc();const x=QP[qi];const opts=shuffle(x.a.map((t,i)=>({t,i})));
-app.innerHTML=`<div class="card"><div class="prog"><i style="width:${qi/(nQ+nC)*100}%"></i></div><div class="emoji">${x.e}</div><h2 style="text-align:center">${x.q}</h2><div class="msg" id="m"></div><div class="row">${rb(x.q+' '+x.a.join('. '))}</div>
-<div class="row">${opts.map(o=>`<button class="big" style="font-size:22px;min-width:240px" onclick="qPick(${o.i===x.c},this)">${o.t}</button>`).join('')}</div><div class="row"><button class="soft" onclick="hnt++;$('hh').style.display='block';sayNow('${x.h}')">💡 Подсказка</button></div><div class="hint" id="hh" style="display:none">${x.h}</div></div>`;say(x.q)}
-function qPick(ok,b){if(ok){rec('Вопрос: '+QP[qi].q,mis,hnt);$('m').innerHTML='<span class="good">'+rp()+' ⭐</span>';say('Правильно!');beep(700);confetti();qi++;setTimeout(qAsk,1000)}else{mis++;$('m').innerHTML='<span class="try">Почти! Открой подсказку и попробуй ещё раз.</span>';say('Попробуй ещё раз');b.style.opacity=.35;beep(250)}}
-let ct=0,ctask;
-function calc(){ct=0;calcAsk()}
-function genC(k){if(k<2){const n=k===0?2:3,x=n===2?[3,4,5,6][Math.floor(Math.random()*4)]:[2,3,4][Math.floor(Math.random()*3)];return{t:`Функция y = x${n===2?'²':'³'}. Найди y при x = ${x}.`,ans:Math.pow(x,n),u:'',f:'y = x'+(n===2?'²':'³')+(n===2?' = x · x':' = x · x · x'),h:`Посчитай: ${Array(n).fill(x).join(' · ')}`,name:'Значение y = x'+(n===2?'²':'³')}}
-const x=[-2,-3][Math.floor(Math.random()*2)];return{t:`Функция y = x². Найди y при x = ${x}.`,ans:x*x,u:'',f:'y = x · x. Минус на минус даёт плюс',h:`(${x}) · (${x}) = ?`,name:'Значение y = x² при отрицательном x'}}
-function calcAsk(){if(ct>=nC)return showResults("lesson('p','startP()')");ctask=genC(ct);mis=0;hnt=0;
-app.innerHTML=`<div class="card"><div class="prog"><i style="width:${(nQ+ct)/(nQ+nC)*100}%"></i></div><h2>Задача ${ct+1} из ${nC}</h2><p style="font-size:26px">${ctask.t}</p><p class="small">Дано → Найти → Решение → Ответ</p>
-<div class="row"><span>Ответ: </span><input type="number" id="ans" inputmode="decimal"></div><div class="msg" id="m"></div>
-<div class="row"><button class="ok" onclick="cCheck()">Проверить</button><button class="soft" onclick="cHint(1)">💡 Подсказка 1</button><button class="soft" onclick="cHint(2)">💡 Подсказка 2</button>${rb(ctask.t)}</div><div class="hint" id="hh" style="display:none"></div></div>`;say(ctask.t)}
-function cHint(n){hnt++;const h=$('hh');h.style.display='block';h.innerHTML=n===1?'Формула: <b>'+ctask.f+'</b>':ctask.h;say(h.textContent)}
-function cCheck(){const v=parseFloat($('ans').value.replace(',','.'));if(Math.abs(v-ctask.ans)<0.01){rec('Задача '+(ct+1)+': '+ctask.name,mis,hnt);$('m').innerHTML='<span class="good">'+rp()+' ⭐</span>';say('Верно!');beep(700);confetti();ct++;setTimeout(calcAsk,1300)}else{mis++;$('m').innerHTML='<span class="try">Пока не то. Открой подсказку и попробуй ещё раз.</span>';say('Попробуй ещё раз');beep(250);if(mis>=2)cHint(2)}}
+/* ===== ТЕМА 11: УРОВЕНЬ А ===== */
+const END='Мост построен! Арки получились красивые. Ты настоящий мастер арок!';
+const STORY=['Ты — мастер арок. В городе строят мост.','Арка моста — это парабола. Она как радуга, только вверх ногами.','Помоги построить мост! Играй и нажимай.','Начнём?'];
+LVL.a='Уровень А (низкий)';
+const LESSONS={a:[
+{e:'🌉',t:'Арка',x:'Это мост с аркой. Арка круглая, как радуга.'},
+{e:'🟦',t:'Квадрат',x:'Квадрат — это много клеточек. Два на два — четыре клеточки. Три на три — девять клеточек.'},
+{e:'📈',t:'Парабола',x:'Арка моста — это парабола. Парабола — это красивая линия, как арка.'},
+{e:'🪞',t:'Зеркало',x:'У арки две одинаковые половинки. Как в зеркале.'}]};
+function glossary(){const all=[['Арка','круглая часть моста'],['Квадрат','фигура с равными сторонами'],['Парабола','линия, похожая на арку'],['Зеркало','две одинаковые половинки']];
+app.innerHTML='<div class="card"><h2>📖 Словарик</h2><table>'+all.map(a=>`<tr><td style="font-size:26px"><b>${a[0]}</b></td><td style="font-size:22px">${a[1]}</td><td>${rb(a[0]+'. '+a[1])}</td></tr>`).join('')+'</table><div class="row"><button class="alt" onclick="home()">В меню</button></div></div>'}
+function bridgeSVG(kind,col){return kind==='arch'?`<svg viewBox="0 0 300 160" width="100%"><rect x="0" y="120" width="300" height="40" fill="#bfe0ff"/><path d="M30 120 Q150 -20 270 120" fill="none" stroke="#8d6e63" stroke-width="16"/><rect x="0" y="116" width="300" height="10" fill="#555"/></svg>`:`<svg viewBox="0 0 300 160" width="100%"><rect x="0" y="120" width="300" height="40" fill="#bfe0ff"/><rect x="30" y="60" width="240" height="16" fill="#8d6e63"/><rect x="60" y="76" width="10" height="44" fill="#a1887f"/><rect x="230" y="76" width="10" height="44" fill="#a1887f"/><rect x="0" y="116" width="300" height="10" fill="#555"/></svg>`}
+let ai=0,li2=0,mis2=0;
+function startA(){RES=[];curLevel='a';mis=0;hnt=0;stepArch()}
+function sayShow(t){say(t)}
+/* 1. найди арку */
+function stepArch(){mis=0;hnt=0;const flip=Math.random()<.5;const A=flip?'flat':'arch',B=flip?'arch':'flat';
+app.innerHTML=`<div class="card"><h2 style="text-align:center">Найди арку! Нажми на неё</h2><div class="row">${rb('Найди арку. Нажми на неё.')}</div><div class="msg" id="m"></div>
+<div class="row"><button class="alt" style="width:45%;min-height:150px" onclick="archPick('${A}')">${bridgeSVG(A)}</button><button class="alt" style="width:45%;min-height:150px" onclick="archPick('${B}')">${bridgeSVG(B)}</button></div></div>`;say('Найди арку. Нажми на неё.')}
+function archPick(k){if(k==='arch'){rec('Найди арку',mis,hnt);$('m').innerHTML='<span class="good">'+rp()+' ⭐ Это арка!</span>';say('Правильно! Это арка.');confetti();beep(700);setTimeout(stepSquares,1400)}else{mis++;$('m').innerHTML='<span class="try">Попробуй ещё раз. Арка круглая, как радуга.</span>';say('Попробуй ещё раз. Арка круглая, как радуга.');beep(250)}}
+/* 2. квадраты */
+let sqN=2;
+function stepSquares(){sqN=2;squares()}
+function squares(){mis=0;hnt=0;const n=sqN,ans=n*n;let on=new Set();
+app.innerHTML=`<div class="card"><h2 style="text-align:center">Раскрась все клеточки (${n} × ${n})</h2><div class="row">${rb('Раскрась все клеточки. Нажимай на клеточки.')}</div><div class="msg" id="m"></div>
+<div id="grid" style="display:grid;grid-template-columns:repeat(${n},90px);gap:6px;justify-content:center;margin:12px 0"></div><div id="cnt" class="row"></div></div>`;
+const G=$('grid');for(let i=0;i<n*n;i++){const c=document.createElement('div');c.style.cssText='width:90px;height:90px;border:4px solid #1f2d3d;background:#fff;cursor:pointer;border-radius:6px';c.onclick=()=>{if(on.has(i))return;on.add(i);c.style.background='#4aa3df';beep(300+on.size*80,.1);if(on.size===n*n)askCount()};G.appendChild(c)}
+say('Раскрась все клеточки. Нажимай на клеточки.');
+function askCount(){rec('Раскрасить квадрат '+n+'×'+n,'tutor');const opts=shuffle([ans-1,ans,ans+1]);$('m').innerHTML='Сколько клеточек? Нажми на число';say('Сколько клеточек? Нажми на число.');$('cnt').innerHTML=opts.map(v=>`<button class="big" onclick="sqPick(${v===ans},this)">${v}</button>`).join('')}
+window.sqPick=(ok,b)=>{if(ok){rec('Сколько клеточек: '+n+'×'+n,mis,hnt);$('m').innerHTML='<span class="good">'+rp()+' ⭐ '+n+' на '+n+' — '+ans+'</span>';say('Правильно! '+n+' на '+n+' — '+ans);confetti();beep(700);setTimeout(()=>{if(sqN===2){sqN=3;squares()}else stepDots()},1600)}else{mis++;$('m').innerHTML='<span class="try">Посчитай вместе: раз, два, три…</span>';say('Посчитай клеточки ещё раз');b.style.opacity=.35;beep(250)}}}
+/* 3. точки */
+const DOTS=[[-2,4],[-1.5,2.25],[-1,1],[-.5,.25],[0,0],[.5,.25],[1,1],[1.5,2.25],[2,4]];
+function stepDots(){mis=0;hnt=0;let k=0;const W=700,H=420,X=x=>350+x*130,Y=y=>370-y*80;
+app.innerHTML=`<div class="card"><h2 style="text-align:center">Соедини точки по номерам</h2><div class="row">${rb('Соедини точки по номерам. Нажимай на точки: один, два, три.')}</div><div class="msg" id="m"></div><canvas id="cv" width="700" height="420" style="width:100%;border:3px solid var(--blue);border-radius:12px;background:#fff"></canvas><div class="row"><button class="soft" id="hb">💡 Подсказка</button></div></div>`;
+const cv=$('cv'),g=cv.getContext('2d');let hl=-1;
+function draw(){g.clearRect(0,0,W,H);g.strokeStyle='#e3ebf7';g.lineWidth=1;for(let i=0;i<=7;i++){g.beginPath();g.moveTo(i*100,0);g.lineTo(i*100,H);g.stroke()}g.strokeStyle='#1f2d3d';g.lineWidth=3;g.beginPath();g.moveTo(0,Y(0));g.lineTo(W,Y(0));g.moveTo(X(0),0);g.lineTo(X(0),H);g.stroke();
+if(k>1){g.strokeStyle='#2d6cdf';g.lineWidth=6;g.beginPath();DOTS.slice(0,k).forEach((p,i)=>i?g.lineTo(X(p[0]),Y(p[1])):g.moveTo(X(p[0]),Y(p[1])));g.stroke()}
+DOTS.forEach((p,i)=>{g.beginPath();g.arc(X(p[0]),Y(p[1]),i===hl?24:18,0,6.28);g.fillStyle=i<k?'#2e9e5b':(i===hl?'#f08a24':'#d22');g.fill();g.fillStyle='#fff';g.font='bold 22px sans-serif';g.textAlign='center';g.fillText(i+1,X(p[0]),Y(p[1])+8)})}
+draw();say('Соедини точки по номерам. Нажимай на точки: один, два, три.');
+$('hb').onclick=()=>{hnt++;hl=k;draw();say('Нажми на точку номер '+(k+1))};
+cv.onclick=e=>{const r=cv.getBoundingClientRect(),s=W/r.width,mx=(e.clientX-r.left)*s,my=(e.clientY-r.top)*s;const p=DOTS[k];if(!p)return;
+if(Math.hypot(mx-X(p[0]),my-Y(p[1]))<32){k++;hl=-1;beep(300+k*60,.12);draw();if(k===DOTS.length){rec('Соедини точки',mis,hnt);confetti();$('m').innerHTML='<span class="good">Получилась арка! ⭐</span>';say('Получилась арка! Молодец!');beep(880,.3);setTimeout(stepChoose,2000)}else $('m').innerHTML='Теперь точка номер '+(k+1)}
+else{mis++;$('m').innerHTML='<span class="try">Почти! Нажми на точку номер '+(k+1)+'</span>';say('Нажми на точку номер '+(k+1));beep(250);if(mis>=2){hl=k;draw()}}};
+$('m').innerHTML='Нажми на точку номер 1'}
+/* 4. выбор графика */
+function graphSVG(kind){return kind==='par'?`<svg viewBox="0 0 200 160" width="100%"><line x1="100" y1="0" x2="100" y2="160" stroke="#222" stroke-width="3"/><line x1="0" y1="140" x2="200" y2="140" stroke="#222" stroke-width="3"/><path d="M30 10 Q100 270 170 10" fill="none" stroke="#2d6cdf" stroke-width="6"/></svg>`:`<svg viewBox="0 0 200 160" width="100%"><line x1="100" y1="0" x2="100" y2="160" stroke="#222" stroke-width="3"/><line x1="0" y1="80" x2="200" y2="80" stroke="#222" stroke-width="3"/><line x1="20" y1="150" x2="180" y2="10" stroke="#2d6cdf" stroke-width="6"/></svg>`}
+let chQ=0;
+function stepChoose(){chQ=0;choose()}
+function choose(){mis=0;hnt=0;const want=chQ===0?'par':'line';const flip=Math.random()<.5;const A=flip?'line':'par',B=flip?'par':'line';
+const q=chQ===0?'Покажи линию, похожую на АРКУ':'Покажи ПРЯМУЮ линию';
+app.innerHTML=`<div class="card"><h2 style="text-align:center">${q}</h2><div class="row">${rb(q)}</div><div class="msg" id="m"></div><div class="row"><button class="alt" style="width:45%" onclick="chPick('${A}','${want}')">${graphSVG(A)}</button><button class="alt" style="width:45%" onclick="chPick('${B}','${want}')">${graphSVG(B)}</button></div></div>`;say(q)}
+function chPick(k,want){if(k===want){rec(chQ===0?'Линия-арка (парабола)':'Прямая линия',mis,hnt);$('m').innerHTML='<span class="good">'+rp()+' ⭐</span>';say('Правильно!');confetti();beep(700);chQ++;setTimeout(()=>chQ>=2?stepMirror():choose(),1200)}else{mis++;$('m').innerHTML='<span class="try">Попробуй ещё раз.</span>';say('Попробуй ещё раз');beep(250)}}
+/* 5. зеркало */
+function stepMirror(){mis=0;hnt=0;const W=700,H=380,X=x=>350+x*150,Y=y=>330-y*70;const R=[[.5,.25],[1,1],[1.5,2.25],[2,4]];let k=0;
+app.innerHTML=`<div class="card"><h2 style="text-align:center">Дострой вторую половину арки</h2><div class="row">${rb('Дострой вторую половину арки. Нажимай на оранжевые кружки справа.')}</div><div class="msg" id="m">Нажимай на оранжевые кружки</div><canvas id="cv" width="700" height="380" style="width:100%;border:3px solid var(--blue);border-radius:12px;background:#fff"></canvas></div>`;
+const cv=$('cv'),g=cv.getContext('2d');
+function draw(){g.clearRect(0,0,W,H);g.strokeStyle='#c0392b';g.setLineDash([10,8]);g.lineWidth=3;g.beginPath();g.moveTo(X(0),0);g.lineTo(X(0),H);g.stroke();g.setLineDash([]);g.strokeStyle='#8d6e63';g.lineWidth=10;g.beginPath();[[-2,4],[-1.5,2.25],[-1,1],[-.5,.25],[0,0]].forEach((p,i)=>i?g.lineTo(X(p[0]),Y(p[1])):g.moveTo(X(p[0]),Y(p[1])));g.stroke();
+if(k>0){g.beginPath();g.moveTo(X(0),Y(0));R.slice(0,k).forEach(p=>g.lineTo(X(p[0]),Y(p[1])));g.stroke()}
+R.forEach((p,i)=>{if(i>=k){g.beginPath();g.arc(X(p[0]),Y(p[1]),i===k?22:14,0,6.28);g.fillStyle=i===k?'#f08a24':'#ffd7a8';g.fill()}})}
+draw();say('Дострой вторую половину арки. Нажимай на оранжевые кружки справа.');
+cv.onclick=e=>{const r=cv.getBoundingClientRect(),s=W/r.width,mx=(e.clientX-r.left)*s,my=(e.clientY-r.top)*s;const p=R[k];if(!p)return;
+if(Math.hypot(mx-X(p[0]),my-Y(p[1]))<34){k++;beep(300+k*80,.12);draw();if(k===R.length){rec('Вторая половина арки (зеркало)','tutor');confetti();$('m').innerHTML='<span class="good">Арка готова! Обе половинки одинаковые ⭐</span>';say('Арка готова! Обе половинки одинаковые. Молодец!');setTimeout(()=>showResults("lesson('a','startA()')"),2400)}}
+else{mis++;$('m').innerHTML='<span class="try">Нажми на большой оранжевый кружок</span>';say('Нажми на большой оранжевый кружок');beep(250)}}}
 function home(){const txt=STORY.join(' ');
-app.innerHTML=`<div class="card"><div class="emoji">🌉📈</div><h2 style="text-align:center">Мастер арок</h2>${STORY.map(p=>'<p style="text-align:center;font-size:26px">'+p+'</p>').join('')}
-<div class="row">${rb(txt)}</div><div class="row"><button class="big ok" onclick="lesson('p','startP()')">🌉 Начать!</button></div></div>`;say(txt)}
+app.innerHTML=`<div class="card"><div class="emoji">🌉</div><h2 style="text-align:center">Мастер арок</h2>${STORY.map(p=>'<p style="text-align:center;font-size:28px">'+p+'</p>').join('')}
+<div class="row">${rb(txt)}</div><div class="row"><button class="big ok" onclick="lesson('a','startA()')">🌉 Начать!</button></div></div>`;say(txt)}
 
 home();
 </script></body></html>
